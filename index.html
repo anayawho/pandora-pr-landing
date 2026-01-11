@@ -210,17 +210,26 @@ footer{
 
 <section class="faq">
  <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+
  <div class="faq-item">
- <strong>Is this an official Pandora program?</strong>
- <div class="faq-answer">This application allows selected participants to receive Pandora PR packages through verified partner campaigns.</div>
+ <strong>Do I need experience?</strong>
+ <div class="faq-answer">
+ No experience is required at all. A genuine passion for jewelry and creativity is more than enough.
  </div>
+ </div>
+
  <div class="faq-item">
- <strong>Do I need to pay anything?</strong>
- <div class="faq-answer">No payment is required. Completing the steps is necessary for eligibility.</div>
+ <strong>Is it free to join?</strong>
+ <div class="faq-answer">
+ Yes, joining the Pandora PR application is completely free. There are no hidden fees or payments required.
  </div>
+ </div>
+
  <div class="faq-item">
  <strong>How long does approval take?</strong>
- <div class="faq-answer">Most applicants receive confirmation within 24–48 hours.</div>
+ <div class="faq-answer">
+ Most applicants receive a response within 24–48 hours after completing all steps.
+ </div>
  </div>
 </section>
 
@@ -245,8 +254,8 @@ document.querySelectorAll('.step').forEach(step=>{
 
 document.querySelectorAll('.faq-item').forEach(item=>{
  item.addEventListener('click',()=>{
- item.querySelector('.faq-answer').style.display =
- item.querySelector('.faq-answer').style.display === 'block' ? 'none' : 'block';
+ const ans=item.querySelector('.faq-answer');
+ ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
  });
 });
 
