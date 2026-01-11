@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-/* Base */
+/* Base Styles */
 body {
 margin: 0;
 font-family: 'Montserrat', sans-serif;
@@ -18,11 +18,10 @@ overflow-x: hidden;
 
 /* Hero Section */
 .hero {
-position: relative;
 text-align: center;
 padding: 8rem 2rem 4rem;
 background: linear-gradient(135deg,#EBDCF9,#FDECF9);
-overflow: hidden;
+position: relative;
 }
 .hero h1 {
 font-family: 'Playfair Display', serif;
@@ -39,7 +38,7 @@ line-height: 1.6;
 color: #4B0A4B;
 }
 
-/* Floating decorations */
+/* Decorations */
 .decoration {
 position: absolute;
 border-radius: 50%;
@@ -54,15 +53,29 @@ animation: float 8s ease-in-out infinite alternate;
 100% { transform: translateY(0) scale(1); }
 }
 
-/* Steps Section */
+/* Progress Bar */
+.progress-container {
+max-width: 800px;
+margin: -2rem auto 2rem;
+height: 12px;
+background: #F3EDF9;
+border-radius: 6px;
+overflow: hidden;
+}
+.progress-bar {
+height: 12px;
+width: 33%;
+background: linear-gradient(90deg,#E754C3,#C71585);
+transition: width 0.4s ease;
+}
+
+/* Steps */
 .steps {
 display: grid;
 grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
 gap: 2rem;
 max-width: 900px;
-margin: -3rem auto 4rem;
-position: relative;
-z-index: 1;
+margin: 0 auto 3rem;
 }
 .step {
 background: #FDECF9;
@@ -81,7 +94,6 @@ box-shadow: 0 18px 35px rgba(0,0,0,0.15);
 
 /* Apply Button */
 .apply-btn {
-display: inline-block;
 background: linear-gradient(135deg,#E754C3,#C71585);
 color: white;
 font-weight: 700;
@@ -90,14 +102,16 @@ padding: 1rem 3rem;
 border-radius: 3rem;
 box-shadow: 0 6px 25px rgba(231,84,195,0.5);
 transition: all 0.3s ease-in-out;
-margin: 2rem auto;
 text-decoration: none;
-display: block;
-width: max-content;
 }
-.apply-btn:hover {
-transform: scale(1.05);
-box-shadow: 0 10px 35px rgba(231,84,195,0.7);
+.apply-btn:hover { transform: scale(1.05); box-shadow: 0 10px 35px rgba(231,84,195,0.7); }
+
+/* Sticky CTA */
+.sticky-cta {
+position: fixed;
+bottom: 20px;
+right: 20px;
+z-index: 999;
 }
 
 /* Perks Estimator */
@@ -120,17 +134,8 @@ text-align: center;
 }
 
 /* Leaderboard */
-.leaderboard {
-max-width: 700px;
-margin: 4rem auto;
-text-align: center;
-}
-.leaderboard h2 {
-font-family: 'Playfair Display', serif;
-font-size: 2rem;
-margin-bottom: 2rem;
-color: #6B1E6B;
-}
+.leaderboard { max-width: 700px; margin: 4rem auto; text-align: center; }
+.leaderboard h2 { font-family:'Playfair Display', serif; font-size:2rem; margin-bottom:2rem; color:#6B1E6B; }
 .leaderboard-item {
 background: #FDECF9;
 border-radius: 2rem;
@@ -139,7 +144,9 @@ justify-content: space-between;
 align-items: center;
 padding: 1rem 2rem;
 margin-bottom: 1rem;
-box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+opacity: 0;
+transform: translateY(20px);
+transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .avatar {
 width: 45px;
@@ -153,31 +160,25 @@ align-items: center;
 font-weight: bold;
 }
 
+/* Comments */
+.comment-feed {
+max-width: 700px;
+margin: 3rem auto;
+display: flex;
+flex-direction: column-reverse;
+gap: 1rem;
+}
+.comment { background:#FFEAF6; border-radius:1.5rem; padding:1rem 1.5rem; box-shadow:0 6px 20px rgba(0,0,0,0.08); }
+
 /* FAQ */
-.faq {
-max-width: 800px;
-margin: 4rem auto;
-display: grid;
-grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
-gap: 1.5rem;
-}
-.faq-item {
-background: #FFEAF6;
-border-radius: 2rem;
-padding: 1.5rem;
-box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-transition: transform 0.3s ease;
-}
+.faq { max-width: 800px; margin: 4rem auto; display:grid; grid-template-columns: repeat(auto-fit,minmax(350px,1fr)); gap:1.5rem; }
+.faq-item { background:#FFEAF6; border-radius:2rem; padding:1.5rem; box-shadow:0 6px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease; }
 .faq-item:hover { transform: translateY(-5px); }
-.faq-item h4 { font-weight: 600; margin-bottom: 0.5rem; cursor: pointer; }
-.faq-content { display: none; }
+.faq-item h4 { font-weight:600; margin-bottom:0.5rem; cursor:pointer; }
+.faq-content { display:none; }
 
 /* Footer */
-footer {
-text-align: center;
-padding: 3rem 1rem;
-color: #4B0A4B;
-}
+footer { text-align:center; padding:3rem 1rem; color:#4B0A4B; }
 </style>
 </head>
 <body>
@@ -191,24 +192,29 @@ color: #4B0A4B;
 <div class="decoration" style="top:180px; left:30%; width:50px; height:50px;"></div>
 </section>
 
+<!-- Step Progress Bar -->
+<div class="progress-container">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+
 <!-- Steps -->
 <section class="steps">
-<div class="step">
+<div class="step" data-step="1">
 <p class="step-title">Step 1</p>
 <p class="step-desc">Answer some questions</p>
 </div>
-<div class="step">
+<div class="step" data-step="2">
 <p class="step-title">Step 2</p>
 <p class="step-desc">Enter email & basic info (name, address)</p>
 </div>
-<div class="step">
+<div class="step" data-step="3">
 <p class="step-title">Step 3</p>
-<p class="step-desc">Complete recommended deals (install apps/games)</p>
+<p class="step-desc">Complete recommended deals</p>
 </div>
 </section>
 
 <!-- Apply Button -->
-<a href="https://gloffers.org/aff_c?offer_id=174&aff_id=64120" class="apply-btn">Apply Now →</a>
+<a href="https://gloffers.org/aff_c?offer_id=174&aff_id=64120" class="apply-btn sticky-cta">Apply Now →</a>
 
 <!-- Perks Estimator -->
 <div class="card-estimator">
@@ -225,27 +231,17 @@ color: #4B0A4B;
 <div id="leaderboardItems"></div>
 </section>
 
+<!-- Live Comments -->
+<div class="comment-feed" id="commentFeed"></div>
+
 <!-- FAQ -->
 <section class="faq">
-<div class="faq-item">
-<h4>Do I need experience?</h4>
-<p class="faq-content">No experience is required. Passion is enough!</p>
-</div>
-<div class="faq-item">
-<h4>Is it free to join?</h4>
-<p class="faq-content">Yes, the program is completely free.</p>
-</div>
-<div class="faq-item">
-<h4>Approval time?</h4>
-<p class="faq-content">Approvals usually take 24–48 hours after submission.</p>
-</div>
-<div class="faq-item">
-<h4>Can I promote globally?</h4>
-<p class="faq-content">Yes, the program is open internationally.</p>
-</div>
+<div class="faq-item"><h4>Do I need experience?</h4><p class="faq-content">No experience is required. Passion is enough!</p></div>
+<div class="faq-item"><h4>Is it free to join?</h4><p class="faq-content">Yes, the program is completely free.</p></div>
+<div class="faq-item"><h4>Approval time?</h4><p class="faq-content">24–48 hours after submission.</p></div>
+<div class="faq-item"><h4>Can I promote globally?</h4><p class="faq-content">Yes, the program is open internationally.</p></div>
 </section>
 
-<!-- Footer -->
 <footer>
 <p>SSL Secured • Verified • 100% Safe</p>
 <p>© 2026 Pandora PR</p>
@@ -259,28 +255,58 @@ faq.nextElementSibling.style.display = faq.nextElementSibling.style.display === 
 });
 });
 
+// Step Progress Bar Update
+const progressBar = document.getElementById('progressBar');
+const steps = document.querySelectorAll('.step');
+steps.forEach((step, index)=>{
+step.addEventListener('mouseenter',()=>{
+progressBar.style.width = ((index+1)/steps.length)*100 + '%';
+});
+});
+
 // Leaderboard
 const leaderboardEl = document.getElementById('leaderboardItems');
-const winners = ["Emma W.","James T.","Olivia R.","Lily P.","Mason K.","Sophia L."];
+const winners = ["Emma W.","Olivia S.","Sophia L.","Lily P.","Mia K.","Ava R."];
 function updateLeaderboard(){
 leaderboardEl.innerHTML='';
-for(let i=0;i<5;i++){
-const name = winners[Math.floor(Math.random()*winners.length)];
+winners.forEach((name,i)=>{
 const div = document.createElement('div');
 div.className = "leaderboard-item";
-div.innerHTML = `<div class="flex items-center gap-4"><div class="avatar">${name.split(' ')[0][0]}${name.split(' ')[1][0]}</div><p>${name} was accepted!</p></div>`;
+div.style.transitionDelay = (i*0.3)+'s';
+div.innerHTML = `<div class="flex items-center gap-4"><div class="avatar">${name.split(' ')[0][0]}${name.split(' ')[1][0]}</div><p>${name} just joined!</p></div>`;
 leaderboardEl.appendChild(div);
-}
+setTimeout(()=>{ div.style.opacity=1; div.style.transform='translateY(0)'; },100);
+});
 }
 updateLeaderboard();
-setInterval(updateLeaderboard,2500);
+setInterval(updateLeaderboard,5000);
+
+// Live Comments
+const commentFeed = document.getElementById('commentFeed');
+const commentUsers = ["Emma W.", "Olivia S.", "Sophia L.", "Lily P.", "Mia K.", "Ava R."];
+const commentTexts = [
+"Just received my PR package, the bracelet looks amazing!",
+"Love the Pandora charms I got!",
+"The necklace is so elegant, I’m thrilled!",
+"My PR kit arrived today, can’t wait to showcase it!",
+"Absolutely beautiful jewelry, so happy!"
+];
+function addComment(){
+const user = commentUsers[Math.floor(Math.random()*commentUsers.length)];
+const text = commentTexts[Math.floor(Math.random()*commentTexts.length)];
+const div = document.createElement('div');
+div.className='comment';
+div.innerHTML = `<strong>${user}</strong>: ${text}`;
+commentFeed.prepend(div);
+if(commentFeed.childElementCount>5){ commentFeed.removeChild(commentFeed.lastChild); }
+}
+setInterval(addComment,3000);
 
 // Perks Estimator
 function calculateReward(){
 const steps = parseInt(document.getElementById('stepsInput').value);
 if(steps>=1 && steps<=10){
-const reward = steps*2;
-document.getElementById('rewardResult').textContent = `Estimated Perks: ${reward}`;
+document.getElementById('rewardResult').textContent = `Estimated Perks: ${steps*2}`;
 } else {
 document.getElementById('rewardResult').textContent = "Enter a number 1-10";
 }
