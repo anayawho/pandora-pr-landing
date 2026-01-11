@@ -62,9 +62,24 @@ body{
 }
 
 /* STEPS */
-.steps{
+.steps-wrap{
  max-width:1000px;
  margin:0 auto 3rem;
+}
+.steps-title{
+ text-align:center;
+ font-size:1.6rem;
+ font-weight:600;
+ margin-bottom:2rem;
+}
+.steps-subtitle{
+ text-align:center;
+ max-width:700px;
+ margin:0 auto 2.5rem;
+ font-size:1.05rem;
+ opacity:.85;
+}
+.steps{
  display:grid;
  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
  gap:2rem;
@@ -192,10 +207,17 @@ footer{
  </div>
 </div>
 
-<section class="steps">
- <div class="step" data-step="1">Answer some questions</div>
- <div class="step" data-step="2">Enter email and basic information</div>
- <div class="step" data-step="3">Complete recommended deals</div>
+<section class="steps-wrap">
+ <div class="steps-title">How the Application Process Works</div>
+ <div class="steps-subtitle">
+ Complete the steps below to be reviewed and approved for the Pandora PR program.
+ </div>
+
+ <div class="steps">
+ <div class="step" data-step="1">Answer a few short questions</div>
+ <div class="step" data-step="2">Enter your email and basic information</div>
+ <div class="step" data-step="3">Complete the recommended partner offers</div>
+ </div>
 </section>
 
 <div class="text-center mb-16">
@@ -214,21 +236,21 @@ footer{
  <div class="faq-item">
  <strong>Do I need experience?</strong>
  <div class="faq-answer">
- No experience is required at all. A genuine passion for jewelry and creativity is more than enough.
+ No experience is required. Passion, creativity, and interest in jewelry are all you need.
  </div>
  </div>
 
  <div class="faq-item">
  <strong>Is it free to join?</strong>
  <div class="faq-answer">
- Yes, joining the Pandora PR application is completely free. There are no hidden fees or payments required.
+ Yes, applying and participating is completely free with no hidden costs.
  </div>
  </div>
 
  <div class="faq-item">
- <strong>How long does approval take?</strong>
+ <strong>Is approval instant?</strong>
  <div class="faq-answer">
- Most applicants receive a response within 24–48 hours after completing all steps.
+ Most applicants are approved instantly after completing all required steps.
  </div>
  </div>
 </section>
