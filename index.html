@@ -1,241 +1,273 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Join Pandora PR Program</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
 body {
  margin: 0;
- font-family: 'Roboto', sans-serif;
- background: linear-gradient(to bottom, #FFE4EC, #FFF0F5);
- color: #5A1E5A;
+ font-family: 'Montserrat', sans-serif;
+ background: linear-gradient(135deg,#FDECF9,#F9EAFB);
+ color: #4B0A4B;
  overflow-x: hidden;
- position: relative;
-}
-
-/* Hero Sparkles */
-.sparkle {
- position: fixed;
- top: -10px;
- color: #FFC0CB;
- font-size: 1em;
- z-index: 9999;
- user-select: none;
- pointer-events: none;
- animation-name: sparkleFall;
- animation-timing-function: linear;
-}
-@keyframes sparkleFall {
- 0% { transform: translateY(0) rotate(0deg); opacity: 1; }
- 100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
 
 /* Hero */
-.animate-pulse-hero { animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100%{transform:scale(1);}50%{transform:scale(1.04);} }
-
-.hero-headline {
- font-family: 'Pacifico', cursive;
+.hero {
+ text-align: center;
+ padding: 6rem 2rem;
+}
+.hero h1 {
+ font-family: 'Playfair Display', serif;
  font-size: 3rem;
- color: #D6336C;
- margin-top: -0.5rem;
+ font-weight: 700;
+ margin-bottom: 1rem;
+ color: #C71585;
+}
+.hero p {
+ font-size: 1.3rem;
+ max-width: 600px;
+ margin: 0 auto;
+ line-height: 1.5;
+ color: #5A1E5A;
 }
 
-/* Step Boxes */
-.step-box {
- background: linear-gradient(135deg,#FFD1E6,#FFE4F2);
- color:#5A1E5A;
+/* Steps Section */
+.steps {
+ display: grid;
+ grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+ gap: 1.5rem;
+ max-width: 900px;
+ margin: 3rem auto;
+}
+.step {
+ background: linear-gradient(145deg,#FDD6ED,#FADBF3);
  border-radius: 2rem;
  padding: 2rem;
  text-align: center;
- box-shadow: 0 10px 20px rgba(0,0,0,0.12);
- transition: transform 0.3s ease;
+ box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.step-box:hover {
- transform: translateY(-6px) scale(1.02);
+.step:hover {
+ transform: translateY(-8px);
+ box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+.step img {
+ width: 50px;
+ margin-bottom: 1rem;
 }
 
 /* Apply Button */
-.click-button {
- background: linear-gradient(135deg,#FF99CC,#FF66B3);
+.apply-btn {
+ display: inline-block;
+ background: linear-gradient(135deg,#FF85C1,#FF3399);
  color: white;
- font-weight: bold;
- font-size: 1.6rem;
+ font-weight: 700;
+ font-size: 1.5rem;
  padding: 1rem 3rem;
  border-radius: 2rem;
- box-shadow: 0 0 20px #FF66B3,0 0 30px #FF99CC;
+ box-shadow: 0 5px 20px rgba(255,51,153,0.5);
  transition: transform 0.3s ease, box-shadow 0.3s ease;
+ margin: 2rem auto;
 }
-.click-button:hover {
+.apply-btn:hover {
  transform: scale(1.05);
- box-shadow: 0 0 25px #FF66B3,0 0 35px #FF99CC;
+ box-shadow: 0 10px 30px rgba(255,51,153,0.7);
 }
 
-/* Cards */
-.card { border-radius: 1.5rem; padding:2rem; box-shadow:0 10px 20px rgba(0,0,0,0.12); transition: transform 0.3s ease; }
-.card:hover { transform: translateY(-5px); }
-.card-estimator { background: linear-gradient(135deg,#FFD1E6,#FFE4F2); color:#5A1E5A; }
-.card-testimonial { background: linear-gradient(135deg,#FFEAF2,#FFD1E6); color:#5A1E5A; }
-.card-leaderboard { background: linear-gradient(135deg,#FFE0EB,#FFCCE0); color:#5A1E5A; }
-.card-faq { background: linear-gradient(135deg,#FFE4F2,#FFFFFF); color:#5A1E5A; }
+/* Perks Estimator */
+.card-estimator {
+ max-width: 500px;
+ margin: 3rem auto;
+ padding: 2rem;
+ border-radius: 2rem;
+ background: linear-gradient(135deg,#FFD6EC,#FFEAF6);
+ text-align: center;
+ box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.card-estimator input {
+ width: 60%;
+ padding: 0.6rem;
+ margin-bottom: 1rem;
+ border-radius: 0.8rem;
+ border: 1px solid #FFC0CB;
+ text-align: center;
+}
 
-/* Popups */
-.popup {
- position: fixed;
- bottom: 20px;
- right: -350px;
- background-color: #FFC0CB;
- color: #5A1E5A;
- padding: 12px 18px;
- border-radius: 12px;
+/* Leaderboard */
+.leaderboard {
+ max-width: 700px;
+ margin: 3rem auto;
+ text-align: center;
+}
+.leaderboard h2 {
+ font-family: 'Playfair Display', serif;
+ font-size: 2rem;
+ margin-bottom: 2rem;
+ color: #C71585;
+}
+.leaderboard-item {
+ background: #FFD6EC;
+ border-radius: 3rem;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 1rem 2rem;
+ margin-bottom: 1rem;
+ box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+.leaderboard-item div {
+ display: flex;
+ align-items: center;
+ gap: 1rem;
+}
+.avatar {
+ width: 45px;
+ height: 45px;
+ border-radius: 50%;
+ background: #FF85C1;
+ color: white;
+ display: flex;
+ align-items: center;
+ justify-content: center;
  font-weight: bold;
- box-shadow: 0 4px 12px rgba(0,0,0,0.2);
- transition: right 0.6s ease, opacity 0.6s ease;
- z-index: 9999;
- opacity: 0;
 }
 
-/* FAQ Toggle */
+/* FAQ */
+.faq {
+ max-width: 800px;
+ margin: 4rem auto;
+ display: grid;
+ grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+ gap: 1.5rem;
+}
+.faq-item {
+ background: #FFEAF6;
+ border-radius: 2rem;
+ padding: 1.5rem;
+ box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+ transition: transform 0.3s ease;
+}
+.faq-item:hover { transform: translateY(-5px); }
+.faq-item h4 { font-weight: 600; margin-bottom: 0.5rem; cursor: pointer; }
 .faq-content { display: none; }
-.faq-item:hover { cursor: pointer; }
+
+/* Footer */
+footer {
+ text-align: center;
+ padding: 3rem 1rem;
+ color: #5A1E5A;
+}
 </style>
 </head>
 <body>
 
 <!-- Hero -->
-<section class="relative py-16 px-4 text-center">
-<h1 class="hero-headline animate-pulse-hero">Become a Pandora PR Ambassador</h1>
-<p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Join our exclusive PR program for Pandora Jewelry lovers. Limited spots available!</p>
+<section class="hero">
+ <h1>Become a Pandora PR Ambassador</h1>
+ <p>Join our exclusive program, share your passion for Pandora Jewelry, and unlock amazing perks and rewards.</p>
+</section>
 
 <!-- Steps -->
-<div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-6">
-<div class="step-box">
-<p class="font-bold text-lg mb-2">Step 1</p>
-<p>Answer some questions</p>
-</div>
-<div class="step-box">
-<p class="font-bold text-lg mb-2">Step 2</p>
-<p>Enter email & basic info (name, address)</p>
-</div>
-<div class="step-box">
-<p class="font-bold text-lg mb-2">Step 3</p>
-<p>Complete recommended deals (install games/apps)</p>
-</div>
-</div>
+<section class="steps">
+ <div class="step">
+ <img src="https://img.icons8.com/emoji/48/000000/question-mark-emoji.png"/>
+ <p class="font-bold">Step 1</p>
+ <p>Answer some questions</p>
+ </div>
+ <div class="step">
+ <img src="https://img.icons8.com/emoji/48/000000/e-mail-emoji.png"/>
+ <p class="font-bold">Step 2</p>
+ <p>Enter email & basic info (name, address)</p>
+ </div>
+ <div class="step">
+ <img src="https://img.icons8.com/emoji/48/000000/video-game-emoji.png"/>
+ <p class="font-bold">Step 3</p>
+ <p>Complete recommended deals (install games/apps)</p>
+ </div>
+</section>
 
 <!-- Apply Button -->
-<div class="mt-6">
-<a href="https://gloffers.org/aff_c?offer_id=1913&aff_id=64120" class="click-button">Apply Now →</a>
+<div style="text-align:center;">
+ <a href="https://gloffers.org/aff_c?offer_id=174&aff_id=64120" class="apply-btn">Apply Now →</a>
 </div>
 
 <!-- Perks Estimator -->
-<div class="mt-10 card card-estimator max-w-2xl mx-auto p-8">
-<label class="block font-bold mb-2 text-lg">Number of perks you want (1-10):</label>
-<input type="number" id="stepsInput" min="1" max="10" class="w-full p-3 rounded-lg mb-4 text-black">
-<button onclick="calculateReward()" class="click-button px-6 py-3 rounded-2xl">Estimate Benefits</button>
-<p class="mt-4 font-bold text-xl" id="rewardResult"></p>
+<div class="card-estimator">
+ <h3 class="font-bold text-xl mb-2">Estimate Your Perks</h3>
+ <input type="number" id="stepsInput" min="1" max="10" placeholder="Number of perks">
+ <br/>
+ <button onclick="calculateReward()" class="apply-btn" style="padding:0.6rem 2rem;font-size:1rem;">Estimate</button>
+ <p id="rewardResult" class="font-bold mt-2"></p>
 </div>
 
 <!-- Leaderboard -->
-<section class="py-20 px-4 text-center">
-<h2 class="text-4xl font-bold mb-12">Recent Accepted Ambassadors</h2>
-<div class="grid md:grid-cols-1 gap-4 max-w-4xl mx-auto" id="leaderboard"></div>
+<section class="leaderboard">
+ <h2>Recent Accepted Ambassadors</h2>
+ <div id="leaderboardItems"></div>
 </section>
 
 <!-- FAQ -->
-<section class="py-20 px-4 text-center">
-<h2 class="text-4xl font-bold mb-12">FAQ</h2>
-<div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
-<div class="card card-faq faq-item">
-<p class="font-bold mb-2">Do I need experience?</p>
-<p class="faq-content">No experience needed. Passion is enough!</p>
-</div>
-<div class="card card-faq faq-item">
-<p class="font-bold mb-2">Is it free?</p>
-<p class="faq-content">Yes, joining the program is completely free.</p>
-</div>
-<div class="card card-faq faq-item">
-<p class="font-bold mb-2">How long to get approved?</p>
-<p class="faq-content">Approvals usually take 24–48 hours after submission.</p>
-</div>
-<div class="card card-faq faq-item">
-<p class="font-bold mb-2">Can I promote globally?</p>
-<p class="faq-content">Yes, the program is open internationally.</p>
-</div>
-</div>
+<section class="faq">
+ <div class="faq-item">
+ <h4>Do I need experience?</h4>
+ <p class="faq-content">No experience is required. Passion is enough!</p>
+ </div>
+ <div class="faq-item">
+ <h4>Is it free to join?</h4>
+ <p class="faq-content">Yes, the program is completely free.</p>
+ </div>
+ <div class="faq-item">
+ <h4>How long until approval?</h4>
+ <p class="faq-content">Approvals usually take 24–48 hours after submission.</p>
+ </div>
+ <div class="faq-item">
+ <h4>Can I promote globally?</h4>
+ <p class="faq-content">Yes, ambassadors from any country can apply.</p>
+ </div>
 </section>
 
 <!-- Footer -->
-<footer class="py-12 px-4 text-center">
-<p class="mb-4">SSL Secured • Encrypted • Verified • 100% Safe</p>
-<p>© 2026 Pandora PR</p>
+<footer>
+ <p>SSL Secured • Verified • 100% Safe</p>
+ <p>© 2026 Pandora PR</p>
 </footer>
-
-<!-- Popup -->
-<div id="popup" class="popup"></div>
 
 <script>
 // FAQ Toggle
-document.querySelectorAll('.faq-item').forEach(item => {
-item.addEventListener('click', () => {
- item.querySelector('.faq-content').classList.toggle('hidden');
-});
+document.querySelectorAll('.faq-item h4').forEach(faq=>{
+ faq.addEventListener('click',()=>{
+ faq.nextElementSibling.style.display = faq.nextElementSibling.style.display === 'block' ? 'none' : 'block';
+ });
 });
 
-// Leaderboard
-const leaderboardEl = document.getElementById('leaderboard');
+// Leaderboard items
+const leaderboardEl = document.getElementById('leaderboardItems');
 const winners = ["Emma W.","James T.","Olivia R.","Lily P.","Mason K.","Sophia L."];
 function updateLeaderboard(){
  leaderboardEl.innerHTML='';
  for(let i=0;i<5;i++){
  const name = winners[Math.floor(Math.random()*winners.length)];
- const div=document.createElement('div');
- div.className="card card-leaderboard flex justify-between items-center p-6";
- div.innerHTML=`<div class="flex items-center gap-4">
- <div class="w-12 h-12 bg-pink-300 rounded-full flex items-center justify-center font-bold text-white">${name.split(' ')[0].charAt(0)}${name.split(' ')[1].charAt(0)}</div>
- <p class="font-semibold">${name} just got accepted!</p></div>`;
+ const div = document.createElement('div');
+ div.className = "leaderboard-item";
+ div.innerHTML = `<div><div class="avatar">${name.split(' ')[0][0]}${name.split(' ')[1][0]}</div><p>${name} was accepted!</p></div>`;
  leaderboardEl.appendChild(div);
  }
 }
 updateLeaderboard();
-setInterval(updateLeaderboard,1500);
-
-// Popups
-const popupEl=document.getElementById('popup');
-function showPopup(){
- const name=winners[Math.floor(Math.random()*winners.length)];
- popupEl.textContent=`${name} just got accepted!`;
- popupEl.style.right='20px';
- popupEl.style.opacity=1;
- setTimeout(()=>{popupEl.style.right='-350px';popupEl.style.opacity=0;},2000);
-}
-showPopup();
-setInterval(showPopup,3000);
-
-// Sparkles
-function createSparkle(){
- const s=document.createElement('div');
- s.className='sparkle';
- s.textContent=' ';
- s.style.left=Math.random()*window.innerWidth+'px';
- s.style.fontSize=(Math.random()*15+10)+'px';
- s.style.animationDuration=(Math.random()*5+5)+'s';
- document.body.appendChild(s);
- setTimeout(()=>{s.remove();},10000);
-}
-setInterval(createSparkle,200);
+setInterval(updateLeaderboard,2000);
 
 // Perks Estimator
 function calculateReward(){
  const steps = parseInt(document.getElementById('stepsInput').value);
  if(steps>=1 && steps<=10){
- const reward = steps*2; // example: 2 perks per step
+ const reward = steps*2;
  document.getElementById('rewardResult').textContent = `Estimated Perks: ${reward}`;
  } else {
- document.getElementById('rewardResult').textContent = "Enter a value between 1 and 10";
+ document.getElementById('rewardResult').textContent = "Enter a number 1-10";
  }
 }
 </script>
