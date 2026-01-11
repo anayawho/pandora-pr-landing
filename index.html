@@ -10,280 +10,283 @@
 
 <style>
 body{
-margin:0;
-font-family:'Montserrat',sans-serif;
-background:linear-gradient(180deg,#FAF6FB,#F2ECF8);
-color:#3A0E3A;
-overflow-x:hidden;
+ margin:0;
+ font-family:'Montserrat',sans-serif;
+ background:linear-gradient(180deg,#FAF6FB,#F2ECF8);
+ color:#3A0E3A;
+ overflow-x:hidden;
 }
 
 /* HERO */
 .hero{
-position:relative;
-text-align:center;
-padding:7rem 2rem 4rem;
-background:linear-gradient(135deg,#EFE1F7,#FCE9F3);
-overflow:hidden;
+ position:relative;
+ text-align:center;
+ padding:7rem 2rem 4rem;
+ background:linear-gradient(135deg,#EFE1F7,#FCE9F3);
 }
 .hero h1{
-font-family:'Playfair Display',serif;
-font-size:3.2rem;
-color:#6B1E6B;
+ font-family:'Playfair Display',serif;
+ font-size:3.2rem;
+ color:#6B1E6B;
 }
 .hero p{
-max-width:720px;
-margin:1rem auto 0;
-font-size:1.25rem;
+ max-width:720px;
+ margin:1rem auto 0;
+ font-size:1.25rem;
 }
 
-/* DECORATIVE BUBBLES */
+/* BUBBLES */
 .bubble{
-position:absolute;
-border-radius:50%;
-background:radial-gradient(circle,#F4C2D7,#D9A7C7);
-opacity:0.25;
+ position:absolute;
+ border-radius:50%;
+ background:radial-gradient(circle,#F4C2D7,#D9A7C7);
+ opacity:0.25;
 }
 
 /* PROGRESS */
 .progress-wrap{
-max-width:900px;
-margin:-2rem auto 2rem;
+ max-width:900px;
+ margin:-2rem auto 2rem;
 }
 .progress-bg{
-height:10px;
-background:#EDE3F3;
-border-radius:6px;
+ height:10px;
+ background:#EDE3F3;
+ border-radius:6px;
 }
 .progress-bar{
-height:10px;
-width:33%;
-background:linear-gradient(90deg,#D9A7C7,#F4C2D7);
-border-radius:6px;
-transition:width .4s ease;
+ height:10px;
+ width:33%;
+ background:linear-gradient(90deg,#D9A7C7,#F4C2D7);
+ border-radius:6px;
+ transition:width .4s ease;
 }
 
 /* STEPS */
 .steps{
-max-width:1000px;
-margin:0 auto 3rem;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:2rem;
+ max-width:1000px;
+ margin:0 auto 3rem;
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+ gap:2rem;
 }
 .step{
-background:rgba(255,255,255,.7);
-backdrop-filter:blur(10px);
-border-radius:2rem;
-padding:2.2rem;
-text-align:center;
-box-shadow:0 15px 35px rgba(0,0,0,.08);
-cursor:pointer;
-transition:.3s ease;
+ background:rgba(255,255,255,.75);
+ backdrop-filter:blur(10px);
+ border-radius:2rem;
+ padding:2.2rem;
+ text-align:center;
+ box-shadow:0 15px 35px rgba(0,0,0,.08);
+ cursor:pointer;
+ transition:.3s ease;
 }
 .step:hover{transform:translateY(-8px);}
 
 /* APPLY BUTTON */
 .apply-btn{
-display:inline-block;
-background:linear-gradient(135deg,#D9A7C7,#F4C2D7);
-color:#4B0A4B;
-font-weight:700;
-font-size:1.3rem;
-padding:1.1rem 3.5rem;
-border-radius:3rem;
-box-shadow:0 10px 30px rgba(217,167,199,.45);
-text-decoration:none;
-transition:.3s ease;
+ display:inline-block;
+ background:linear-gradient(135deg,#E6B7D6,#F6CFE4);
+ color:#4B0A4B;
+ font-weight:700;
+ font-size:1.25rem;
+ padding:1.1rem 3.5rem;
+ border-radius:3rem;
+ box-shadow:0 0 18px rgba(230,183,214,.7);
+ text-decoration:none;
+ transition:.3s ease;
 }
 .apply-btn:hover{
-transform:scale(1.05);
-box-shadow:0 15px 40px rgba(217,167,199,.6);
+ transform:scale(1.06);
+ box-shadow:0 0 30px rgba(230,183,214,.95);
 }
 
 /* STICKY CTA */
 .sticky-cta{
-position:fixed;
-bottom:20px;
-right:20px;
-z-index:999;
+ position:fixed;
+ bottom:20px;
+ right:20px;
+ z-index:999;
 }
 
 /* COMMENTS */
 .comments{
-max-width:750px;
-margin:4rem auto;
+ max-width:750px;
+ margin:4rem auto;
 }
 .comment{
-background:rgba(255,255,255,.75);
-backdrop-filter:blur(8px);
-border-radius:1.6rem;
-padding:1.1rem 1.6rem;
-margin-bottom:1rem;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
+ background:rgba(255,255,255,.8);
+ backdrop-filter:blur(8px);
+ border-radius:1.6rem;
+ padding:1.1rem 1.6rem;
+ margin-bottom:1rem;
+ box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
 /* LEADERBOARD */
 .leaderboard{
-max-width:750px;
-margin:4rem auto;
+ max-width:750px;
+ margin:4rem auto;
 }
 .lb-item{
-background:rgba(255,255,255,.75);
-backdrop-filter:blur(8px);
-border-radius:2rem;
-padding:1rem 2rem;
-margin-bottom:1rem;
-display:flex;
-align-items:center;
-gap:1rem;
-opacity:0;
-transform:translateY(20px);
-transition:.6s ease;
+ background:rgba(255,255,255,.8);
+ backdrop-filter:blur(8px);
+ border-radius:2rem;
+ padding:1rem 2rem;
+ margin-bottom:1rem;
+ display:flex;
+ align-items:center;
+ gap:1rem;
+ opacity:0;
+ transform:translateY(20px);
+ transition:.6s ease;
 }
 .avatar{
-width:46px;
-height:46px;
-border-radius:50%;
-background:#D9A7C7;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-color:#4B0A4B;
+ width:46px;
+ height:46px;
+ border-radius:50%;
+ background:#D9A7C7;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-weight:bold;
+ color:#4B0A4B;
 }
 
-/* POPUP */
-.popup{
-position:fixed;
-bottom:90px;
-right:-350px;
-background:#F4C2D7;
-color:#4B0A4B;
-padding:.8rem 1.4rem;
-border-radius:1.4rem;
-font-weight:600;
-box-shadow:0 8px 20px rgba(0,0,0,.2);
-transition:.6s ease;
-z-index:999;
+/* FAQ */
+.faq{
+ max-width:900px;
+ margin:5rem auto;
 }
+.faq-item{
+ background:rgba(255,255,255,.85);
+ border-radius:1.8rem;
+ padding:1.5rem 2rem;
+ margin-bottom:1rem;
+ box-shadow:0 10px 25px rgba(0,0,0,.08);
+ cursor:pointer;
+}
+.faq-answer{display:none;margin-top:.8rem;}
 
 /* FOOTER */
 footer{
-text-align:center;
-padding:3rem 1rem;
-color:#4B0A4B;
+ text-align:center;
+ padding:3rem 1rem;
+ color:#4B0A4B;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
 <section class="hero">
-<h1>Pandora PR Application</h1>
-<p>Apply to receive Pandora Jewelry PR packages and collaborate as an ambassador.</p>
+ <h1>Pandora PR Application</h1>
+ <p>Apply to receive Pandora Jewelry PR packages and collaborate as an ambassador.</p>
 
-<div class="bubble" style="width:80px;height:80px;left:12%;top:40px;"></div>
-<div class="bubble" style="width:60px;height:60px;left:68%;top:120px;"></div>
-<div class="bubble" style="width:70px;height:70px;left:38%;top:220px;"></div>
+ <div class="bubble" style="width:80px;height:80px;left:12%;top:40px;"></div>
+ <div class="bubble" style="width:60px;height:60px;left:68%;top:120px;"></div>
+ <div class="bubble" style="width:70px;height:70px;left:38%;top:220px;"></div>
 </section>
 
-<!-- PROGRESS -->
 <div class="progress-wrap">
-<div class="progress-bg">
-<div class="progress-bar" id="progressBar"></div>
-</div>
+ <div class="progress-bg">
+ <div class="progress-bar" id="progressBar"></div>
+ </div>
 </div>
 
-<!-- STEPS -->
 <section class="steps">
-<div class="step" data-step="1">Answer some questions</div>
-<div class="step" data-step="2">Enter email and basic information</div>
-<div class="step" data-step="3">Complete recommended deals</div>
+ <div class="step" data-step="1">Answer some questions</div>
+ <div class="step" data-step="2">Enter email and basic information</div>
+ <div class="step" data-step="3">Complete recommended deals</div>
 </section>
 
-<!-- APPLY -->
 <div class="text-center mb-16">
-<a href="https://gloffers.org/aff_c?offer_id=174&aff_id=64120" class="apply-btn">Apply Now</a>
+ <a href="https://gloffers.org/aff_c?offer_id=174&aff_id=64120" class="apply-btn">
+ Apply Now →
+ </a>
 </div>
 
-<!-- COMMENTS -->
 <section class="comments" id="comments"></section>
 
-<!-- LEADERBOARD -->
 <section class="leaderboard" id="leaderboard"></section>
 
-<!-- STICKY CTA -->
+<section class="faq">
+ <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+ <div class="faq-item">
+ <strong>Is this an official Pandora program?</strong>
+ <div class="faq-answer">This application allows selected participants to receive Pandora PR packages through verified partner campaigns.</div>
+ </div>
+ <div class="faq-item">
+ <strong>Do I need to pay anything?</strong>
+ <div class="faq-answer">No payment is required. Completing the steps is necessary for eligibility.</div>
+ </div>
+ <div class="faq-item">
+ <strong>How long does approval take?</strong>
+ <div class="faq-answer">Most applicants receive confirmation within 24–48 hours.</div>
+ </div>
+</section>
+
 <div class="sticky-cta">
-<a href="https://gloffers.org/aff_c?offer_id=174&aff_id=64120" class="apply-btn">Apply</a>
+ <a href="https://gloffers.org/aff_c?offer_id=174&aff_id=64120" class="apply-btn">
+ Apply →
+ </a>
 </div>
 
-<!-- POPUP -->
-<div class="popup" id="popup"></div>
+<footer>
+ <p>SSL Secured • Encrypted • Privacy Protected • Verified Partners</p>
+ <p class="mt-2">© 2025</p>
+</footer>
 
 <script>
-/* PROGRESS */
 document.querySelectorAll('.step').forEach(step=>{
-step.addEventListener('click',()=>{
-document.getElementById('progressBar').style.width =
-step.dataset.step * 33 + '%';
-});
+ step.addEventListener('click',()=>{
+ document.getElementById('progressBar').style.width =
+ step.dataset.step * 33 + '%';
+ });
 });
 
-/* COMMENTS */
-const commentTexts=[
+document.querySelectorAll('.faq-item').forEach(item=>{
+ item.addEventListener('click',()=>{
+ item.querySelector('.faq-answer').style.display =
+ item.querySelector('.faq-answer').style.display === 'block' ? 'none' : 'block';
+ });
+});
+
+const girls=["Emma","Sophia","Olivia","Ava","Mia","Isabella","Lily","Chloe"];
+const comments=[
 "Just received my PR package, the bracelet looks amazing.",
 "The quality is unreal, I love everything I received.",
-"This feels so professional and exclusive.",
-"My Pandora ring arrived today, absolutely stunning.",
-"I cannot believe I was selected for this PR."
+"My Pandora ring arrived today and it’s stunning.",
+"This feels so exclusive and professional."
 ];
-const girls=["Emma","Sophia","Olivia","Ava","Mia","Isabella","Lily","Chloe"];
 const commentBox=document.getElementById('comments');
-
 function addComment(){
-const div=document.createElement('div');
-div.className='comment';
-div.innerHTML=`<strong>${girls[Math.floor(Math.random()*girls.length)]}</strong>:
-${commentTexts[Math.floor(Math.random()*commentTexts.length)]}`;
-commentBox.prepend(div);
-if(commentBox.children.length>6) commentBox.removeChild(commentBox.lastChild);
+ const div=document.createElement('div');
+ div.className='comment';
+ div.innerHTML=`<strong>${girls[Math.floor(Math.random()*girls.length)]}</strong>: ${comments[Math.floor(Math.random()*comments.length)]}`;
+ commentBox.prepend(div);
+ if(commentBox.children.length>6) commentBox.removeChild(commentBox.lastChild);
 }
-setInterval(addComment,3000);
 for(let i=0;i<3;i++) addComment();
+setInterval(addComment,3000);
 
-/* LEADERBOARD */
 const leaderboard=document.getElementById('leaderboard');
 function addLeader(){
-const name=girls[Math.floor(Math.random()*girls.length)];
-const item=document.createElement('div');
-item.className='lb-item';
-item.innerHTML=`<div class="avatar">${name[0]}</div>
-<div>${name} just joined the Pandora PR program</div>`;
-leaderboard.prepend(item);
-setTimeout(()=>{item.style.opacity=1;item.style.transform='translateY(0)';},50);
-if(leaderboard.children.length>5) leaderboard.removeChild(leaderboard.lastChild);
+ const name=girls[Math.floor(Math.random()*girls.length)];
+ const item=document.createElement('div');
+ item.className='lb-item';
+ item.innerHTML=`<div class="avatar">${name[0]}</div><div>${name} joined the Pandora PR program</div>`;
+ leaderboard.prepend(item);
+ setTimeout(()=>{item.style.opacity=1;item.style.transform='translateY(0)';},50);
+ if(leaderboard.children.length>5) leaderboard.removeChild(leaderboard.lastChild);
 }
-setInterval(addLeader,2500);
 for(let i=0;i<3;i++) addLeader();
+setInterval(addLeader,2500);
 
-/* POPUP */
-const popup=document.getElementById('popup');
-function showPopup(){
-const name=girls[Math.floor(Math.random()*girls.length)];
-popup.textContent=`${name} just received her PR package`;
-popup.style.right='20px';
-setTimeout(()=>popup.style.right='-350px',2200);
-}
-setInterval(showPopup,4000);
-
-/* SCROLL BUBBLES */
 const bubbles=document.querySelectorAll('.bubble');
 window.addEventListener('scroll',()=>{
-const scrollY=window.scrollY;
-bubbles.forEach((b,i)=>{
-b.style.transform=`translateY(${scrollY*0.15*(i+1)}px)`;
-});
+ const y=window.scrollY;
+ bubbles.forEach((b,i)=>{
+ b.style.transform=`translateY(${y*0.15*(i+1)}px)`;
+ });
 });
 </script>
 
