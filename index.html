@@ -41,6 +41,7 @@ body{
  border-radius:50%;
  background:radial-gradient(circle,#F4C2D7,#D9A7C7);
  opacity:0.25;
+ pointer-events:none;
 }
 
 /* PROGRESS */
@@ -65,13 +66,6 @@ body{
 .steps-wrap{
  max-width:1000px;
  margin:0 auto 3rem;
-}
-.steps-subtitle{
- text-align:center;
- max-width:700px;
- margin:0 auto 2.5rem;
- font-size:1.1rem;
- font-weight:600;
 }
 .steps{
  display:grid;
@@ -197,9 +191,9 @@ footer{
  <p>Apply to receive Pandora Jewelry PR packages and collaborate as an ambassador.</p>
  <p class="mt-4 font-semibold">Complete the steps below to be approved:</p>
 
- <div class="bubble" style="width:80px;height:80px;left:12%;top:40px;"></div>
- <div class="bubble" style="width:60px;height:60px;left:68%;top:120px;"></div>
- <div class="bubble" style="width:70px;height:70px;left:38%;top:220px;"></div>
+ <div class="bubble" data-speed="0.2" style="width:90px;height:90px;left:12%;top:80px;"></div>
+ <div class="bubble" data-speed="0.35" style="width:60px;height:60px;left:65%;top:150px;"></div>
+ <div class="bubble" data-speed="0.25" style="width:75px;height:75px;left:38%;top:230px;"></div>
 </section>
 
 <div class="progress-wrap">
@@ -214,12 +208,10 @@ footer{
  <div class="step-number">1</div>
  Answer a few short questions
  </div>
-
  <div class="step" data-step="2">
  <div class="step-number">2</div>
  Enter your email and basic information (name, address, etc.)
  </div>
-
  <div class="step" data-step="3">
  <div class="step-number">3</div>
  Complete recommended deals (such as installing games or apps)
@@ -267,6 +259,7 @@ footer{
 </footer>
 
 <script>
+/* Progress */
 document.querySelectorAll('.step').forEach(step=>{
  step.addEventListener('click',()=>{
  document.getElementById('progressBar').style.width =
@@ -274,6 +267,7 @@ document.querySelectorAll('.step').forEach(step=>{
  });
 });
 
+/* FAQ */
 document.querySelectorAll('.faq-item').forEach(item=>{
  item.addEventListener('click',()=>{
  const ans=item.querySelector('.faq-answer');
@@ -281,6 +275,7 @@ document.querySelectorAll('.faq-item').forEach(item=>{
  });
 });
 
+/* COMMENTS */
 const girls=["Emma","Sophia","Olivia","Ava","Mia","Isabella","Lily","Chloe"];
 const comments=[
 "Just received my PR package, the bracelet looks amazing.",
@@ -299,6 +294,7 @@ function addComment(){
 for(let i=0;i<3;i++) addComment();
 setInterval(addComment,3000);
 
+/* LEADERBOARD */
 const leaderboard=document.getElementById('leaderboard');
 function addLeader(){
  const name=girls[Math.floor(Math.random()*girls.length)];
@@ -312,11 +308,16 @@ function addLeader(){
 for(let i=0;i<3;i++) addLeader();
 setInterval(addLeader,2500);
 
+/* SCROLL-DRIVEN BUBBLES */
 const bubbles=document.querySelectorAll('.bubble');
 window.addEventListener('scroll',()=>{
- const y=window.scrollY;
- bubbles.forEach((b,i)=>{
- b.style.transform=`translateY(${y*0.15*(i+1)}px)`;
+ const scrollTop=window.scrollY;
+ const docHeight=document.body.scrollHeight-window.innerHeight;
+ const progress=scrollTop/docHeight;
+
+ bubbles.forEach(b=>{
+ const speed=parseFloat(b.dataset.speed);
+ b.style.transform=`translateY(${progress*window.innerHeight*3*speed}px)`;
  });
 });
 </script>
