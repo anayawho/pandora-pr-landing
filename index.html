@@ -66,18 +66,12 @@ body{
  max-width:1000px;
  margin:0 auto 3rem;
 }
-.steps-title{
- text-align:center;
- font-size:1.6rem;
- font-weight:600;
- margin-bottom:2rem;
-}
 .steps-subtitle{
  text-align:center;
  max-width:700px;
  margin:0 auto 2.5rem;
- font-size:1.05rem;
- opacity:.85;
+ font-size:1.1rem;
+ font-weight:600;
 }
 .steps{
  display:grid;
@@ -88,13 +82,19 @@ body{
  background:rgba(255,255,255,.75);
  backdrop-filter:blur(10px);
  border-radius:2rem;
- padding:2.2rem;
+ padding:2.4rem;
  text-align:center;
  box-shadow:0 15px 35px rgba(0,0,0,.08);
  cursor:pointer;
  transition:.3s ease;
 }
 .step:hover{transform:translateY(-8px);}
+.step-number{
+ font-size:2.2rem;
+ font-weight:700;
+ color:#B76BA3;
+ margin-bottom:.8rem;
+}
 
 /* APPLY BUTTON */
 .apply-btn{
@@ -195,6 +195,7 @@ footer{
 <section class="hero">
  <h1>Pandora PR Application</h1>
  <p>Apply to receive Pandora Jewelry PR packages and collaborate as an ambassador.</p>
+ <p class="mt-4 font-semibold">Complete the steps below to be approved:</p>
 
  <div class="bubble" style="width:80px;height:80px;left:12%;top:40px;"></div>
  <div class="bubble" style="width:60px;height:60px;left:68%;top:120px;"></div>
@@ -208,15 +209,21 @@ footer{
 </div>
 
 <section class="steps-wrap">
- <div class="steps-title">How the Application Process Works</div>
- <div class="steps-subtitle">
- Complete the steps below to be approved.
+ <div class="steps">
+ <div class="step" data-step="1">
+ <div class="step-number">1</div>
+ Answer a few short questions
  </div>
 
- <div class="steps">
- <div class="step" data-step="1">Answer a few short questions</div>
- <div class="step" data-step="2">Enter your email and basic information</div>
- <div class="step" data-step="3">Complete the recommended partner offers</div>
+ <div class="step" data-step="2">
+ <div class="step-number">2</div>
+ Enter your email and basic information (name, address, etc.)
+ </div>
+
+ <div class="step" data-step="3">
+ <div class="step-number">3</div>
+ Complete recommended deals (such as installing games or apps)
+ </div>
  </div>
 </section>
 
