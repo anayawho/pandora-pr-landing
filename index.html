@@ -15,18 +15,20 @@ body{
  background:linear-gradient(180deg,#FAF6FB,#F2ECF8);
  color:#3A0E3A;
  overflow-x:hidden;
+ position:relative;
 }
 
 /* HERO */
 .hero{
- position:relative;
  text-align:center;
- padding:7rem 2rem 4rem;
+ padding:6rem 2rem 4rem;
  background:linear-gradient(135deg,#EFE1F7,#FCE9F3);
+ position:relative;
+ overflow:hidden;
 }
 .hero h1{
  font-family:'Playfair Display',serif;
- font-size:3.2rem;
+ font-size:3rem;
  color:#6B1E6B;
 }
 .hero p{
@@ -191,9 +193,10 @@ footer{
  <p>Apply to receive Pandora Jewelry PR packages and collaborate as an ambassador.</p>
  <p class="mt-4 font-semibold">Complete the steps below to be approved:</p>
 
- <div class="bubble" data-speed="0.2" style="width:90px;height:90px;left:12%;top:80px;"></div>
- <div class="bubble" data-speed="0.35" style="width:60px;height:60px;left:65%;top:150px;"></div>
- <div class="bubble" data-speed="0.25" style="width:75px;height:75px;left:38%;top:230px;"></div>
+ <!-- Bubbles -->
+ <div class="bubble" data-speed="0.2" style="width:90px;height:90px;left:12%;top:20px;"></div>
+ <div class="bubble" data-speed="0.35" style="width:60px;height:60px;left:65%;top:120px;"></div>
+ <div class="bubble" data-speed="0.25" style="width:75px;height:75px;left:38%;top:200px;"></div>
 </section>
 
 <div class="progress-wrap">
@@ -210,11 +213,11 @@ footer{
  </div>
  <div class="step" data-step="2">
  <div class="step-number">2</div>
- Enter your email and basic information (name, address, etc.)
+ Enter your email and basic info (name, address, etc.)
  </div>
  <div class="step" data-step="3">
  <div class="step-number">3</div>
- Complete recommended deals (such as installing games or apps)
+ Complete recommended deals (install apps or games)
  </div>
  </div>
 </section>
@@ -308,20 +311,20 @@ function addLeader(){
 for(let i=0;i<3;i++) addLeader();
 setInterval(addLeader,2500);
 
-/* SCROLL-DRIVEN BUBBLES */
-const bubbles = document.querySelectorAll('.bubble');
+/* SCROLL-DRIVEN BUBBLES FULL PAGE */
+const bubbles=document.querySelectorAll('.bubble');
 
-window.addEventListener('scroll', () => {
- const scrollTop = window.scrollY;
- const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+bubbles.forEach(bubble=>{
+ // store initial top offset
+ bubble.dataset.initialTop=bubble.offsetTop;
+});
 
- bubbles.forEach(bubble => {
- const speed = parseFloat(bubble.dataset.speed) || 0.2;
-
- // Move bubbles through the FULL document height
- const translateY = (scrollTop / docHeight) * docHeight * speed;
-
- bubble.style.transform = `translateY(${translateY}px)`;
+window.addEventListener('scroll',()=>{
+ const scrollTop=window.scrollY;
+ bubbles.forEach(bubble=>{
+ const speed=parseFloat(bubble.dataset.speed)||0.2;
+ const initialTop=parseFloat(bubble.dataset.initialTop);
+ bubble.style.top = initialTop + scrollTop*speed + 'px';
  });
 });
 </script>
