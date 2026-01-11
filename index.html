@@ -309,15 +309,19 @@ for(let i=0;i<3;i++) addLeader();
 setInterval(addLeader,2500);
 
 /* SCROLL-DRIVEN BUBBLES */
-const bubbles=document.querySelectorAll('.bubble');
-window.addEventListener('scroll',()=>{
- const scrollTop=window.scrollY;
- const docHeight=document.body.scrollHeight-window.innerHeight;
- const progress=scrollTop/docHeight;
+const bubbles = document.querySelectorAll('.bubble');
 
- bubbles.forEach(b=>{
- const speed=parseFloat(b.dataset.speed);
- b.style.transform=`translateY(${progress*window.innerHeight*3*speed}px)`;
+window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+ bubbles.forEach(bubble => {
+ const speed = parseFloat(bubble.dataset.speed) || 0.2;
+
+ // Move bubbles through the FULL document height
+ const translateY = (scrollTop / docHeight) * docHeight * speed;
+
+ bubble.style.transform = `translateY(${translateY}px)`;
  });
 });
 </script>
