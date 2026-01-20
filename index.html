@@ -83,6 +83,7 @@ body{
  box-shadow:0 15px 35px rgba(0,0,0,.08);
  cursor:pointer;
  transition:.3s ease;
+ font-weight:600;
 }
 .step:hover{transform:translateY(-8px);}
 .step-number{
@@ -217,7 +218,7 @@ footer{
  </div>
  <div class="step" data-step="3">
  <div class="step-number">3</div>
- Complete recommended deals (install apps or games)
+ Complete 4-5 deals (install apps or games)
  </div>
  </div>
 </section>
@@ -315,7 +316,6 @@ setInterval(addLeader,2500);
 const bubbles=document.querySelectorAll('.bubble');
 
 bubbles.forEach(bubble=>{
- // store initial top offset
  bubble.dataset.initialTop=bubble.offsetTop;
 });
 
