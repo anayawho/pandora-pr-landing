@@ -30,9 +30,43 @@ font-size:1.1rem;
 
 /* Headline */
 .hero-title{
-font-size:2.8rem;
+font-size:2rem; /* Smaller headline */
 font-weight:800;
 color:#6B2F6B;
+margin-bottom:1rem;
+}
+
+/* Apply Sections Horizontal */
+.apply-section-wrapper {
+display:flex;
+gap:1rem;
+overflow-x:auto;
+padding:1rem 0;
+scroll-snap-type:x mandatory;
+justify-content:center;
+}
+.apply-section {
+background:linear-gradient(145deg,#FFE0EB,#FFB3D9);
+border-radius:2rem;
+padding:1rem 1.5rem;
+text-align:center;
+min-width:160px;
+max-width:180px;
+box-shadow:0 10px 25px rgba(180,100,150,0.25);
+scroll-snap-align:center;
+transition:0.3s;
+}
+.apply-section:hover {
+transform:translateY(-6px) scale(1.05);
+}
+.apply-button {
+background:linear-gradient(90deg,#C27BA0,#FF7BA9);
+color:white;
+font-weight:bold;
+padding:0.6rem 1.4rem;
+border-radius:1.5rem;
+display:inline-block;
+margin-top:0.4rem;
 }
 
 /* Steps */
@@ -48,6 +82,24 @@ transition:0.3s;
 transform:translateY(-5px);
 }
 
+/* Calculator */
+.card{
+background:white;
+border-radius:1.5rem;
+padding:1.5rem;
+box-shadow:0 10px 20px rgba(180,100,150,0.12);
+text-align:center;
+}
+#stepsInput{
+width:100%;
+padding:0.75rem;
+border-radius:1rem;
+border:none;
+background:#FFE0EB; /* Pink input background */
+color:#3B1F3B;
+margin-bottom:0.5rem;
+}
+
 /* Main button */
 .main-btn{
 background:#C27BA0;
@@ -59,13 +111,8 @@ font-weight:bold;
 box-shadow:0 0 15px rgba(180,100,150,0.4);
 }
 
-/* Cards */
-.card{
-background:white;
-border-radius:1.5rem;
-padding:1.5rem;
-box-shadow:0 10px 20px rgba(180,100,150,0.12);
-}
+/* FAQ */
+.faq-item { cursor:pointer; }
 
 /* Bubbles */
 #bubbles {position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
@@ -92,9 +139,21 @@ pointer-events:none;
 <div class="banner"> Celebrate Valentine’s Day with Pandora! </div>
 
 <section class="py-12 px-4 text-center relative z-10">
-<h1 class="hero-title mb-6">Claim Your Pandora Gift Card This Valentine’s Day!</h1>
+<h1 class="hero-title">Claim Your Pandora Gift Card This Valentine’s Day!</h1>
 
 <p class="mb-4 font-medium">All you need to do is complete these steps:</p>
+
+<!-- Apply Sections -->
+<div class="apply-section-wrapper mb-6">
+<div class="apply-section">
+<p class="font-bold mb-1">Must complete 4-5 offers</p>
+<a href="https://glctrk.org/aff_c?offer_id=289&aff_id=64120" class="apply-button">Apply for $150 →</a>
+</div>
+<div class="apply-section">
+<p class="font-bold mb-1">Must complete 8+ offers</p>
+<a href="https://glctrk.org/aff_c?offer_id=289&aff_id=64120" class="apply-button">Apply for $450 →</a>
+</div>
+</div>
 
 <!-- Steps -->
 <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-6">
@@ -106,8 +165,8 @@ pointer-events:none;
 <!-- Calculator -->
 <div class="card max-w-xl mx-auto text-center mt-6">
 <label class="block font-bold mb-2">Deals to complete (4–70):</label>
-<input type="number" id="stepsInput" min="4" max="70" class="w-full p-3 rounded mb-3 text-black">
-<button onclick="calculateReward()" class="main-btn px-6 py-2">Calculate</button>
+<input type="number" id="stepsInput" min="4" max="70" placeholder="Enter number of deals">
+<button onclick="calculateReward()" class="main-btn px-6 py-2 mt-2">Calculate</button>
 <p id="rewardResult" class="mt-4 font-bold text-xl"></p>
 </div>
 
@@ -116,7 +175,7 @@ pointer-events:none;
 <h2 class="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
 <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
 <div class="card faq-item"><p class="font-bold mb-2">Is my information secure?</p><p class="faq-content hidden">All information is encrypted and stored securely. We never share your data.</p></div>
-<div class="card faq-item"><p class="font-bold mb-2">How do I claim my reward?</p><p class="faq-content hidden">Complete 3 simple steps: answer surveys, enter email & basic info, do recommended deals (such as installing games and apps)</p></div>
+<div class="card faq-item"><p class="font-bold mb-2">How do I claim my reward?</p><p class="faq-content hidden">Complete 3 simple steps: answer surveys, enter email & basic info, do recommended deals (such as installing apps or games)</p></div>
 <div class="card faq-item"><p class="font-bold mb-2">Can I apply from desktop?</p><p class="faq-content hidden">Desktop applications are not supported; please use mobile.</p></div>
 <div class="card faq-item"><p class="font-bold mb-2">Do I have to pay anything?</p><p class="faq-content hidden">No payment is required.</p></div>
 <div class="card faq-item"><p class="font-bold mb-2">When will I receive it?</p><p class="faq-content hidden">Right after completing 4+ deals, it will be sent to your email.</p></div>
@@ -163,7 +222,6 @@ document.getElementById('rewardResult').textContent=`Estimated Reward: $${reward
 const leaderboard=document.getElementById("leaderboard");
 const names=["Ella","Ava","Sophia","Mia","Chloe","Luna","Isabella","Grace"];
 const rewards=["$150","$300","$450","$600","$900"];
-
 function updateLeaderboard(){
 leaderboard.innerHTML="";
 for(let i=0;i<4;i++){
@@ -189,7 +247,6 @@ const commentsArr=[
 "best gift ever",
 "just finished the steps and got it!"
 ];
-
 const commentsDiv=document.getElementById("comments");
 function updateComments(){
 commentsDiv.innerHTML="";
