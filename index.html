@@ -3,330 +3,226 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pandora PR Application</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<title>Pandora Valentine’s Day Gift Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-body{
- margin:0;
- font-family:'Montserrat',sans-serif;
- background:linear-gradient(180deg,#FAF6FB,#F2ECF8);
- color:#3A0E3A;
- overflow-x:hidden;
- position:relative;
+body {
+margin:0;
+font-family:'Montserrat',sans-serif;
+background:linear-gradient(to bottom,#FFEAF2,#FFD1E6);
+color:#3B1F3B;
+overflow-x:hidden;
+position:relative;
 }
 
-/* HERO */
-.hero{
- text-align:center;
- padding:6rem 2rem 4rem;
- background:linear-gradient(135deg,#EFE1F7,#FCE9F3);
- position:relative;
- overflow:hidden;
-}
-.hero h1{
- font-family:'Playfair Display',serif;
- font-size:3rem;
- color:#6B1E6B;
-}
-.hero p{
- max-width:720px;
- margin:1rem auto 0;
- font-size:1.25rem;
+/* Banner */
+.banner{
+background:#C27BA0;
+color:white;
+padding:12px;
+text-align:center;
+font-weight:bold;
+border-bottom:2px solid #FFB3D9;
+font-size:1.1rem;
 }
 
-/* BUBBLES */
-.bubble{
- position:absolute;
- border-radius:50%;
- background:radial-gradient(circle,#F4C2D7,#D9A7C7);
- opacity:0.25;
- pointer-events:none;
+/* Headline */
+.hero-title{
+font-size:2.8rem;
+font-weight:800;
+color:#6B2F6B;
 }
 
-/* PROGRESS */
-.progress-wrap{
- max-width:900px;
- margin:-2rem auto 2rem;
+/* Steps */
+.step-box{
+background:white;
+border-radius:1.5rem;
+padding:1.5rem;
+text-align:center;
+box-shadow:0 10px 20px rgba(180,100,150,0.15);
+transition:0.3s;
 }
-.progress-bg{
- height:10px;
- background:#EDE3F3;
- border-radius:6px;
-}
-.progress-bar{
- height:10px;
- width:33%;
- background:linear-gradient(90deg,#D9A7C7,#F4C2D7);
- border-radius:6px;
- transition:width .4s ease;
+.step-box:hover{
+transform:translateY(-5px);
 }
 
-/* STEPS */
-.steps-wrap{
- max-width:1000px;
- margin:0 auto 3rem;
-}
-.steps{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
- gap:2rem;
-}
-.step{
- background:rgba(255,255,255,.75);
- backdrop-filter:blur(10px);
- border-radius:2rem;
- padding:2.4rem;
- text-align:center;
- box-shadow:0 15px 35px rgba(0,0,0,.08);
- cursor:pointer;
- transition:.3s ease;
- font-weight:600;
-}
-.step:hover{transform:translateY(-8px);}
-.step-number{
- font-size:2.2rem;
- font-weight:700;
- color:#B76BA3;
- margin-bottom:.8rem;
+/* Main button */
+.main-btn{
+background:#C27BA0;
+color:white;
+font-size:1.3rem;
+padding:1rem 3rem;
+border-radius:2rem;
+font-weight:bold;
+box-shadow:0 0 15px rgba(180,100,150,0.4);
 }
 
-/* APPLY BUTTON */
-.apply-btn{
- display:inline-block;
- background:linear-gradient(135deg,#E6B7D6,#F6CFE4);
- color:#4B0A4B;
- font-weight:700;
- font-size:1.25rem;
- padding:1.1rem 3.5rem;
- border-radius:3rem;
- box-shadow:0 0 18px rgba(230,183,214,.7);
- text-decoration:none;
- transition:.3s ease;
-}
-.apply-btn:hover{
- transform:scale(1.06);
- box-shadow:0 0 30px rgba(230,183,214,.95);
+/* Cards */
+.card{
+background:white;
+border-radius:1.5rem;
+padding:1.5rem;
+box-shadow:0 10px 20px rgba(180,100,150,0.12);
 }
 
-/* STICKY CTA */
-.sticky-cta{
- position:fixed;
- bottom:20px;
- right:20px;
- z-index:999;
+/* Bubbles */
+#bubbles {position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+.bubble {
+position:absolute;
+border-radius:50%;
+background: radial-gradient(circle at 30% 30%, #FF7BA9, #FF9BCB);
+opacity:0.4;
+animation: floatBubble linear infinite;
+pointer-events:none;
 }
-
-/* COMMENTS */
-.comments{
- max-width:750px;
- margin:4rem auto;
-}
-.comment{
- background:rgba(255,255,255,.8);
- backdrop-filter:blur(8px);
- border-radius:1.6rem;
- padding:1.1rem 1.6rem;
- margin-bottom:1rem;
- box-shadow:0 10px 25px rgba(0,0,0,.08);
-}
-
-/* LEADERBOARD */
-.leaderboard{
- max-width:750px;
- margin:4rem auto;
-}
-.lb-item{
- background:rgba(255,255,255,.8);
- backdrop-filter:blur(8px);
- border-radius:2rem;
- padding:1rem 2rem;
- margin-bottom:1rem;
- display:flex;
- align-items:center;
- gap:1rem;
- opacity:0;
- transform:translateY(20px);
- transition:.6s ease;
-}
-.avatar{
- width:46px;
- height:46px;
- border-radius:50%;
- background:#D9A7C7;
- display:flex;
- align-items:center;
- justify-content:center;
- font-weight:bold;
- color:#4B0A4B;
-}
-
-/* FAQ */
-.faq{
- max-width:900px;
- margin:5rem auto;
-}
-.faq-item{
- background:rgba(255,255,255,.85);
- border-radius:1.8rem;
- padding:1.5rem 2rem;
- margin-bottom:1rem;
- box-shadow:0 10px 25px rgba(0,0,0,.08);
- cursor:pointer;
-}
-.faq-answer{display:none;margin-top:.8rem;}
-
-/* FOOTER */
-footer{
- text-align:center;
- padding:3rem 1rem;
- color:#4B0A4B;
+@keyframes floatBubble {
+0% { transform: translateY(0px) scale(0.5); opacity:0.4; }
+50% { opacity:0.5; }
+100% { transform: translateY(110vh) scale(1); opacity:0.45; }
 }
 </style>
 </head>
 
 <body>
 
-<section class="hero">
- <h1>Pandora PR Application</h1>
- <p>Apply to receive Pandora Jewelry PR packages and collaborate as an ambassador.</p>
- <p class="mt-4 font-semibold">Complete the steps below to be approved:</p>
+<div id="bubbles"></div>
 
- <!-- Bubbles -->
- <div class="bubble" data-speed="0.2" style="width:90px;height:90px;left:12%;top:20px;"></div>
- <div class="bubble" data-speed="0.35" style="width:60px;height:60px;left:65%;top:120px;"></div>
- <div class="bubble" data-speed="0.25" style="width:75px;height:75px;left:38%;top:200px;"></div>
-</section>
+<div class="banner"> Celebrate Valentine’s Day with Pandora! </div>
 
-<div class="progress-wrap">
- <div class="progress-bg">
- <div class="progress-bar" id="progressBar"></div>
- </div>
+<section class="py-12 px-4 text-center relative z-10">
+<h1 class="hero-title mb-6">Claim Your Pandora Gift Card This Valentine’s Day!</h1>
+
+<p class="mb-4 font-medium">All you need to do is complete these steps:</p>
+
+<!-- Steps -->
+<div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-6">
+<div class="step-box"><p class="font-bold mb-1">Step 1</p><p>Complete surveys</p></div>
+<div class="step-box"><p class="font-bold mb-1">Step 2</p><p>Enter email & basic info</p></div>
+<div class="step-box"><p class="font-bold mb-1">Step 3</p><p>Complete recommended deals (install apps or games)</p></div>
 </div>
 
-<section class="steps-wrap">
- <div class="steps">
- <div class="step" data-step="1">
- <div class="step-number">1</div>
- Answer a few short questions
- </div>
- <div class="step" data-step="2">
- <div class="step-number">2</div>
- Enter your email and basic info (name, address, etc.)
- </div>
- <div class="step" data-step="3">
- <div class="step-number">3</div>
- Complete 4-5 deals (install apps or games)
- </div>
- </div>
-</section>
-
-<div class="text-center mb-16">
- <a href="https://gloffers.org/aff_c?offer_id=174&aff_id=64120" class="apply-btn">
- Apply Now →
- </a>
+<!-- Calculator -->
+<div class="card max-w-xl mx-auto text-center mt-6">
+<label class="block font-bold mb-2">Deals to complete (4–70):</label>
+<input type="number" id="stepsInput" min="4" max="70" class="w-full p-3 rounded mb-3 text-black">
+<button onclick="calculateReward()" class="main-btn px-6 py-2">Calculate</button>
+<p id="rewardResult" class="mt-4 font-bold text-xl"></p>
 </div>
 
-<section class="comments" id="comments"></section>
-<section class="leaderboard" id="leaderboard"></section>
-
-<section class="faq">
- <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
-
- <div class="faq-item">
- <strong>Do I need experience?</strong>
- <div class="faq-answer">No experience is required. Passion and interest are enough.</div>
- </div>
-
- <div class="faq-item">
- <strong>Is it free to join?</strong>
- <div class="faq-answer">Yes, applying is completely free.</div>
- </div>
-
- <div class="faq-item">
- <strong>Is approval instant?</strong>
- <div class="faq-answer">Most applicants are approved instantly after completing all steps.</div>
- </div>
+<!-- FAQ -->
+<section class="py-12 px-4 text-center">
+<h2 class="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
+<div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
+<div class="card faq-item"><p class="font-bold mb-2">Is my information secure?</p><p class="faq-content hidden">All information is encrypted and stored securely. We never share your data.</p></div>
+<div class="card faq-item"><p class="font-bold mb-2">How do I claim my reward?</p><p class="faq-content hidden">Complete 3 simple steps: answer surveys, enter email & basic info, do recommended deals (such as installing games and apps)</p></div>
+<div class="card faq-item"><p class="font-bold mb-2">Can I apply from desktop?</p><p class="faq-content hidden">Desktop applications are not supported; please use mobile.</p></div>
+<div class="card faq-item"><p class="font-bold mb-2">Do I have to pay anything?</p><p class="faq-content hidden">No payment is required.</p></div>
+<div class="card faq-item"><p class="font-bold mb-2">When will I receive it?</p><p class="faq-content hidden">Right after completing 4+ deals, it will be sent to your email.</p></div>
+</div>
 </section>
 
-<div class="sticky-cta">
- <a href="https://gloffers.org/aff_c?offer_id=174&aff_id=64120" class="apply-btn">
- Apply →
- </a>
-</div>
+<!-- Leaderboard -->
+<section class="py-10 text-center">
+<h2 class="text-3xl font-bold mb-6">Recent Winners</h2>
+<div id="leaderboard" class="max-w-3xl mx-auto space-y-3"></div>
+</section>
 
-<footer>
- <p>SSL Secured • Encrypted • Privacy Protected • Verified Partners</p>
- <p class="mt-2">© 2025</p>
+<!-- Live Comments -->
+<section class="py-10 text-center">
+<h2 class="text-3xl font-bold mb-6">Live Comments</h2>
+<div id="comments" class="max-w-3xl mx-auto space-y-3"></div>
+</section>
+
+<footer class="py-10 text-center">
+<p>Secure • Encrypted • Verified</p>
+<p>© 2026 Pandora Valentine’s Day Edition</p>
 </footer>
 
 <script>
-/* Progress */
-document.querySelectorAll('.step').forEach(step=>{
- step.addEventListener('click',()=>{
- document.getElementById('progressBar').style.width =
- step.dataset.step * 33 + '%';
- });
-});
-
-/* FAQ */
+// FAQ toggle
 document.querySelectorAll('.faq-item').forEach(item=>{
- item.addEventListener('click',()=>{
- const ans=item.querySelector('.faq-answer');
- ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
- });
+item.addEventListener('click',()=>{
+item.querySelector('.faq-content').classList.toggle('hidden');
+});
 });
 
-/* COMMENTS */
-const girls=["Emma","Sophia","Olivia","Ava","Mia","Isabella","Lily","Chloe"];
-const comments=[
-"Just received my PR package, the bracelet looks amazing.",
-"The quality is unreal, I love everything I received.",
-"My Pandora ring arrived today and it’s stunning.",
-"This feels so exclusive and professional."
+// Reward calculator
+function calculateReward(){
+const steps=parseInt(document.getElementById('stepsInput').value);
+if(steps<4){
+document.getElementById('rewardResult').textContent="You must complete 4+ deals to claim it";
+return;
+}
+const reward=Math.round((steps/4)*150);
+document.getElementById('rewardResult').textContent=`Estimated Reward: $${reward}`;
+}
+
+// Leaderboard
+const leaderboard=document.getElementById("leaderboard");
+const names=["Ella","Ava","Sophia","Mia","Chloe","Luna","Isabella","Grace"];
+const rewards=["$150","$300","$450","$600","$900"];
+
+function updateLeaderboard(){
+leaderboard.innerHTML="";
+for(let i=0;i<4;i++){
+const name=names[Math.floor(Math.random()*names.length)];
+const reward=rewards[Math.floor(Math.random()*rewards.length)];
+const div=document.createElement("div");
+div.className="card flex justify-between";
+div.textContent=`${name} just claimed ${reward}`;
+leaderboard.appendChild(div);
+}
+}
+setInterval(updateLeaderboard,1500);
+updateLeaderboard();
+
+// Live comments
+const commentsArr=[
+"omg I just got my Pandora gift!",
+"this was so easy and fun",
+"love this Valentine's Day gift",
+"my charm bracelet is perfect now",
+"can't believe how fast it worked",
+"pandora made my day",
+"best gift ever",
+"just finished the steps and got it!"
 ];
-const commentBox=document.getElementById('comments');
-function addComment(){
- const div=document.createElement('div');
- div.className='comment';
- div.innerHTML=`<strong>${girls[Math.floor(Math.random()*girls.length)]}</strong>: ${comments[Math.floor(Math.random()*comments.length)]}`;
- commentBox.prepend(div);
- if(commentBox.children.length>6) commentBox.removeChild(commentBox.lastChild);
+
+const commentsDiv=document.getElementById("comments");
+function updateComments(){
+commentsDiv.innerHTML="";
+for(let i=0;i<3;i++){
+const text=commentsArr[Math.floor(Math.random()*commentsArr.length)];
+const div=document.createElement("div");
+div.className="card";
+div.textContent=text;
+commentsDiv.appendChild(div);
 }
-for(let i=0;i<3;i++) addComment();
-setInterval(addComment,3000);
-
-/* LEADERBOARD */
-const leaderboard=document.getElementById('leaderboard');
-function addLeader(){
- const name=girls[Math.floor(Math.random()*girls.length)];
- const item=document.createElement('div');
- item.className='lb-item';
- item.innerHTML=`<div class="avatar">${name[0]}</div><div>${name} joined the Pandora PR program</div>`;
- leaderboard.prepend(item);
- setTimeout(()=>{item.style.opacity=1;item.style.transform='translateY(0)';},50);
- if(leaderboard.children.length>5) leaderboard.removeChild(leaderboard.lastChild);
 }
-for(let i=0;i<3;i++) addLeader();
-setInterval(addLeader,2500);
+setInterval(updateComments,2000);
+updateComments();
 
-/* SCROLL-DRIVEN BUBBLES FULL PAGE */
-const bubbles=document.querySelectorAll('.bubble');
-
-bubbles.forEach(bubble=>{
- bubble.dataset.initialTop=bubble.offsetTop;
-});
-
-window.addEventListener('scroll',()=>{
- const scrollTop=window.scrollY;
- bubbles.forEach(bubble=>{
- const speed=parseFloat(bubble.dataset.speed)||0.2;
- const initialTop=parseFloat(bubble.dataset.initialTop);
- bubble.style.top = initialTop + scrollTop*speed + 'px';
- });
-});
+// Bubbles
+const bubblesContainer = document.getElementById('bubbles');
+function createBubble(topPosition = -50) {
+const bubble = document.createElement('div');
+bubble.className = 'bubble';
+const size = Math.random() * 30 + 20;
+bubble.style.width = size + 'px';
+bubble.style.height = size + 'px';
+bubble.style.left = Math.random() * 100 + 'vw';
+bubble.style.top = topPosition + 'px';
+bubble.style.animationDuration = (50 + Math.random() * 30) + 's';
+bubblesContainer.appendChild(bubble);
+bubble.addEventListener('animationend', () => bubble.remove());
+}
+for(let i = 0; i < 30; i++){
+const randomTop = Math.random() * window.innerHeight;
+createBubble(randomTop);
+}
+setInterval(() => createBubble(), 500);
 </script>
 
 </body>
